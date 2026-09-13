@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>for you.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Background -->
+  <canvas id="stars"></canvas>
+
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+
+  <!-- ================= HERO ================= -->
+
+  <main>
+
+    <section class="hero section">
+
+      <div class="eyebrow reveal">
+        something I made for you
+      </div>
+
+      <h1 class="hero-title reveal delay-1">
+        for<br>
+        <span>you.</span>
+      </h1>
+
+      <p class="hero-subtitle reveal delay-2">
+        I didn't really know how to say it,
+        so I figured I'd show you instead.
+      </p>
+
+      <button
+        class="begin-button reveal delay-3"
+        id="beginButton"
+      >
+        come here
+        <span>↓</span>
+      </button>
+
+    </section>
+
+
+    <!-- ================= INTRO ================= -->
+
+    <section class="section story">
+
+      <div class="story-content">
+
+        <span class="section-number">01</span>
+
+        <h2>
+          Somewhere along the way,
+          <em>you happened.</em>
+        </h2>
+
+        <p>
+          And somehow you became one of those people
+          I look forward to hearing from.
+        </p>
+
+        <p>
+          Nothing dramatic.
+          Nothing I planned.
+          It just... happened.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= LITTLE THINGS ================= -->
+
+    <section class="section things">
+
+      <span class="section-number">02</span>
+
+      <h2>
+        It's the little things.
+      </h2>
+
+      <div class="things-grid">
+
+        <article class="thing-card">
+          <span>01</span>
+          <h3>Your laugh</h3>
+          <p>
+            Especially when you try not to laugh.
+          </p>
+        </article>
+
+        <article class="thing-card">
+          <span>02</span>
+          <h3>Your energy</h3>
+          <p>
+            Somehow you make ordinary conversations
+            feel like something I'll remember.
+          </p>
+        </article>
+
+        <article class="thing-card">
+          <span>03</span>
+          <h3>You.</h3>
+          <p>
+            Honestly, I could keep listing things,
+            but you'd probably make fun of me.
+          </p>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= PHOTO ================= -->
+
+    <section class="section photo-section">
+
+      <span class="section-number">03</span>
+
+      <div class="photo-frame">
+
+        <!-- Replace this with your image -->
+        <img
+          src="assets/photo1.jpg"
+          alt="A memory"
+          onerror="this.style.display='none'"
+        />
+
+        <div class="photo-placeholder">
+          <span>your favorite memory here</span>
+        </div>
+
+      </div>
+
+      <p class="photo-caption">
+        one of the many moments I'd keep.
+        <br><br>
+        HEY, i can see you laughing behind that screen.
+        <br><br>
+        yknow,
+        <br><br>
+        its okay.
+      </p>
+
+    </section>
+
+
+    <!-- ================= INTERACTIVE ================= -->
+
+    <section class="section interactive">
+
+      <span class="section-number">04</span>
+
+      <h2>
+        Okay...
+        <br>
+        one more thing.
+      </h2>
+
+      <p>
+        I made you a button.
+        Obviously you should press it.
+      </p>
+
+      <button id="heartButton" class="heart-button">
+        <span>♥</span>
+        <small>don't be scared</small>
+      </button>
+
+      <div id="hiddenMessage" class="hidden-message">
+
+        <p>
+          I love you.
+        </p>
+
+        <span>
+          There. I said it again.
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= ENDING ================= -->
+
+    <section class="section ending">
+
+      <div class="ending-content">
+
+        <span class="section-number">05</span>
+
+        <h2>
+          That's all.
+        </h2>
+
+        <p>
+          No big speech.
+          No complicated explanation.
+        </p>
+
+        <p class="final-line">
+          I'm just really happy
+          it's you.
+        </p>
+
+        <div class="signature">
+          — me
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Floating music control -->
+
+  <button id="musicButton" class="music-button">
+    ♫
+  </button>
+
+  <audio id="music" loop>
+    <source src="assets/song.mp3" type="audio/mpeg">
+  </audio>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
