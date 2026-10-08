@@ -5,33 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>for you.</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;1,500&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Background Canvas for Stars & Falling Snow -->
+  <!-- Main Background Canvas: STARS ONLY -->
   <canvas id="stars"></canvas>
 
   <div class="ambient ambient-1"></div>
   <div class="ambient ambient-2"></div>
 
   <main>
-    <!-- HERO -->
+    <!-- HERO SECTION -->
     <section class="hero section">
-      <div class="eyebrow reveal">something I made for you</div>
-      <h1 class="hero-title reveal delay-1">for<br><span>you.</span></h1>
-      <p class="hero-subtitle reveal delay-2">
+      <div class="eyebrow">something I made for you</div>
+      <h1 class="hero-title">for<br><span>you.</span></h1>
+      <p class="hero-subtitle">
         I didn't really know how to say it, so I figured I'd show you instead.
       </p>
-      <button class="begin-button reveal delay-3" id="beginButton">
+      <button class="begin-button" id="beginButton">
         come here <span>↓</span>
       </button>
     </section>
 
-    <!-- INTRO -->
+    <!-- STORY SECTION -->
     <section class="section story">
       <div class="story-content">
         <span class="section-number">01</span>
@@ -41,7 +43,7 @@
       </div>
     </section>
 
-    <!-- LITTLE THINGS -->
+    <!-- LITTLE THINGS SECTION -->
     <section class="section things">
       <span class="section-number">02</span>
       <h2>It's the little things.</h2>
@@ -64,12 +66,11 @@
       </div>
     </section>
 
-    <!-- PHOTO GALLERY -->
+    <!-- PHOTO / GIF SECTION -->
     <section class="section photo-section">
       <span class="section-number">03</span>
       <div class="photo-frame">
-        <img src="assets/photo1.jpg" alt="A memory" onerror="this.style.display='none'" />
-        <div class="photo-placeholder"><span>your favorite memory here</span></div>
+        <img src="assets/photo1.gif" alt="A memory" onerror="this.src='assets/photo1.jpg'" />
       </div>
       <p class="photo-caption">
         one of the many moments I'd keep.<br><br>
@@ -78,7 +79,7 @@
       </p>
     </section>
 
-    <!-- INTERACTIVE SECTION WITH SECRET GAME BUTTON -->
+    <!-- INTERACTIVE SECTION -->
     <section class="section interactive">
       <span class="section-number">04</span>
       <h2>Okay...<br>one more thing.</h2>
@@ -90,10 +91,9 @@
           <small>don't be scared</small>
         </button>
 
-        <!-- SECRET GAME TRIGGER BUTTON -->
-        <button id="secretGameBtn" class="secret-game-btn" title="A cold December night...">
+        <button id="winterVoiceBtn" class="secret-game-btn" title="Listen closely...">
           <span>❄</span>
-          <small>a winter path...</small>
+          <small>winter voice...</small>
         </button>
       </div>
 
@@ -103,7 +103,7 @@
       </div>
     </section>
 
-    <!-- ENDING -->
+    <!-- ENDING SECTION -->
     <section class="section ending">
       <div class="ending-content">
         <span class="section-number">05</span>
@@ -115,7 +115,7 @@
     </section>
   </main>
 
-  <!-- MUSIC DRAWER WIDGET -->
+  <!-- MUSIC DRAWER -->
   <div class="music-widget">
     <button id="musicButton" class="music-button">♫</button>
     <div id="playlistDrawer" class="playlist-drawer hidden">
@@ -128,22 +128,27 @@
     </div>
   </div>
 
-  <audio id="music" loop>
+  <audio id="music" loop autoplay muted>
     <source src="assets/song.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- FULLSCREEN DECEMBER MINI-GAME OVERLAY -->
-  <div id="gameModal" class="game-modal hidden">
-    <button id="closeGameBtn" class="close-game-btn">✕</button>
-    <canvas id="gameCanvas"></canvas>
+  <!-- SECONDARY PAGE: WINTER VOICE OVERLAY -->
+  <div id="winterModal" class="winter-modal hidden">
+    <!-- Controls Top Right -->
+    <div class="winter-controls">
+      <button id="langToggleBtn" class="lang-btn">Қазақша</button>
+      <button id="closeWinterBtn" class="close-game-btn">✕</button>
+    </div>
     
-    <div id="gameUI" class="game-ui">
-      <div class="game-controls-hint">Use ← / → or A / D to walk through the snow</div>
-      <div id="dialogueBox" class="dialogue-box hidden">
-        <div id="dialogueSpeaker" class="dialogue-speaker">Me</div>
-        <div id="dialogueText" class="dialogue-text"></div>
-        <button id="dialogueNextBtn" class="dialogue-next">Next ➔</button>
-      </div>
+    <!-- Winter Background Image / GIF -->
+    <div class="winter-bg" style="background-image: url('assets/backgrounds/snowy_night.gif');"></div>
+    
+    <!-- Snowflake Overlay Canvas -->
+    <canvas id="snowCanvas"></canvas>
+    
+    <!-- Randomly Positioned Text Phrase -->
+    <div id="winterPhraseBox" class="winter-phrase-box">
+      <p id="winterPhrase" class="pixel-phrase"></p>
     </div>
   </div>
 
