@@ -208,7 +208,7 @@ const phrasesEN = [
   "a very deep world. full of thoghts.",
   "thoughts i want to acomplish,with you..",
   "keep working hard..",
-  "I love you.sincerly.."
+  "I love you.sincerly..",
 ];
 
 // Coherent Kazakh translations
