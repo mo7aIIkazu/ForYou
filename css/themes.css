@@ -1,0 +1,30 @@
+/* Theme tokens. Choose a theme in js/config.js and extend this file if desired. */
+:root {
+  color-scheme: dark;
+  --bg: #19070e;
+  --text: #fff1ed;
+  --muted: #c5a5ab;
+  --pink: #a9284b;
+  --pink-soft: #efadb9;
+  --purple: #78324b;
+  --border: rgba(236, 170, 184, 0.18);
+  --card-bg: rgba(105, 24, 49, 0.16);
+  --surface-raised: rgba(94, 21, 43, 0.24);
+  --surface-border: rgba(236, 170, 184, 0.19);
+  --feature-radius: 18px;
+  --feature-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
+}
+
+::selection { background: rgba(196, 67, 97, 0.36); color: var(--text); }
+:focus-visible { outline: 2px solid var(--pink-soft); outline-offset: 4px; }
+button, input { font: inherit; }
+button:disabled { cursor: not-allowed; opacity: 0.55; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

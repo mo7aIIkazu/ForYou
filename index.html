@@ -4,13 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>for you.</title>
+  <meta name="theme-color" content="#4a0e20" />
+  <meta name="description" content="A little corner of the internet, made with love." />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;1,500&family=Press+Start+2P&display=swap" rel="stylesheet" />
   
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/features.css" />
 </head>
 <body>
 
@@ -70,7 +74,7 @@
     <section class="section photo-section">
       <span class="section-number">03</span>
       <div class="photo-frame">
-        <img src="assets/photo1.gif" alt="A memory" onerror="this.src='assets/photo1.jpg'" />
+        <img src="assets/images/photo1.jpg" alt="A favorite memory" loading="lazy" />
       </div>
       <p class="photo-caption">
         one of the many moments I'd keep.<br><br>
@@ -113,26 +117,158 @@
         <div class="signature">— me</div>
       </div>
     </section>
+
+    <!-- GROWING FEATURES: content lives in js/data/*.js -->
+    <section class="section feature-hub" aria-labelledby="littleUniverseTitle">
+      <span class="section-number">06</span>
+      <h2 id="littleUniverseTitle">A few more little things.</h2>
+      <p class="feature-intro">A tiny corner that can keep growing, one little memory at a time.</p>
+      <nav class="feature-nav" aria-label="Explore our little corner">
+        <a class="feature-nav-card" href="#memoryArchive"><span class="feature-icon" aria-hidden="true">✧</span><span><strong>Little memories</strong><small>Moments worth keeping</small></span><span aria-hidden="true">↗</span></a>
+        <a class="feature-nav-card" href="#openWhen"><span class="feature-icon" aria-hidden="true">♡</span><span><strong>Open when…</strong><small>Letters for certain days</small></span><span aria-hidden="true">↗</span></a>
+        <a class="feature-nav-card" href="#dateQuest"><span class="feature-icon" aria-hidden="true">☼</span><span><strong>Our little quest</strong><small>Things to do together</small></span><span aria-hidden="true">↗</span></a>
+        <a class="feature-nav-card" href="#littleGarden"><span class="feature-icon" aria-hidden="true">♡</span><span><strong>Daily hello</strong><small>One little check-in a day</small></span><span aria-hidden="true">↗</span></a>
+        <a class="feature-nav-card" href="#tinyArcade"><span class="feature-icon" aria-hidden="true">☆</span><span><strong>Tiny arcade</strong><small>A small secret to unlock</small></span><span aria-hidden="true">↗</span></a>
+        <a class="feature-nav-card" href="#forYouKombat"><span class="feature-icon" aria-hidden="true">🥊</span><span><strong>ForYou Kombat</strong><small>Choose your fighter</small></span><span aria-hidden="true">↗</span></a>
+      </nav>
+    </section>
+
+    <section class="section feature-section" id="memoryArchive" aria-labelledby="memoryArchiveTitle">
+      <span class="section-number">07</span>
+      <h2 id="memoryArchiveTitle">Little memories, kept here.</h2>
+      <p class="feature-intro">The photos, tiny stories, and moments we'll add over time.</p>
+      <div id="memoryGalleryGrid" class="memory-grid" aria-live="polite"></div>
+      <p id="memoryGalleryEmpty" class="empty-state">The album is waiting for its first memory. We'll add your photos and captions here together.</p>
+    </section>
+
+    <section class="section feature-section" id="openWhen" aria-labelledby="openWhenTitle">
+      <span class="section-number">08</span>
+      <h2 id="openWhenTitle">Open when…</h2>
+      <p class="feature-intro">Little notes for moments when you might need them.</p>
+      <div id="lettersGrid" class="letters-grid"></div>
+      <p id="lettersEmpty" class="empty-state">Your envelopes are waiting to be written. Add letters in <code>js/data/letters.js</code> when you're ready.</p>
+      <article id="letterReveal" class="letter-reveal" hidden aria-live="polite">
+        <button id="closeLetterButton" class="subtle-button letter-close" type="button" aria-label="Close letter">×</button>
+        <p id="letterRevealEyebrow" class="letter-eyebrow">a little note for you</p>
+        <h3 id="letterRevealTitle"></h3>
+        <div id="letterRevealBody" class="letter-body"></div>
+        <p id="letterRevealSignature" class="letter-signature"></p>
+      </article>
+    </section>
+
+    <section class="section feature-section" id="dateQuest" aria-labelledby="dateQuestTitle">
+      <span class="section-number">09</span>
+      <h2 id="dateQuestTitle">Things we should do together.</h2>
+      <p class="feature-intro">A tiny bucket list. No rush, no streaks—just things to look forward to.</p>
+      <div class="quest-progress-track" role="progressbar" aria-label="Date ideas completed" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0"><div id="questProgressBar" class="quest-progress-bar"></div></div>
+      <p id="questProgressText" class="quest-progress-text" aria-live="polite">Nothing checked off yet. That's okay.</p>
+      <ul id="dateQuestList" class="quest-list"></ul>
+      <p id="dateQuestEmpty" class="empty-state" hidden>Add ideas in <code>js/data/date-ideas.js</code>.</p>
+    </section>
+
+    <section class="section feature-section garden-section" id="littleGarden" aria-labelledby="littleGardenTitle">
+      <span class="section-number">10</span>
+      <h2 id="littleGardenTitle">Your daily little hello. ♡</h2>
+      <p class="feature-intro">One tiny check-in every 24 hours makes our little pixel heart grow. No guilt if life gets busy — just come back when you can.</p>
+      <div class="garden-card daily-checkin-card">
+        <div id="gardenPlant" class="garden-plant daily-heart-growth" role="img" aria-label="A little heart just starting to grow">♡</div>
+        <p id="gardenStage" class="garden-stage">Our little story starts here.</p>
+        <div class="garden-progress-track" role="progressbar" aria-label="Daily check-in growth" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="gardenProgressBar" class="garden-progress-bar"></div></div>
+        <p id="gardenProgressText" class="garden-progress-text">0 daily hellos so far</p>
+        <button id="waterGardenButton" class="soft-action-button daily-checkin-button" type="button">♡ I'm here today</button>
+        <p id="gardenCountdown" class="garden-note" aria-live="polite">Your next hello is ready whenever you are.</p>
+        <p class="garden-note">This check-in is saved in this browser on this device.</p>
+      </div>
+    </section>
+
+    <section class="section feature-section arcade-section" id="tinyArcade" aria-labelledby="tinyArcadeTitle">
+      <span class="section-number">11</span>
+      <h2 id="tinyArcadeTitle">A tiny secret.</h2>
+      <p class="feature-intro">Tap the star five times to find a little surprise.</p>
+      <div class="arcade-card">
+        <button id="wishStarButton" class="wish-star-button" type="button" aria-label="Collect a star">✦</button>
+        <p id="wishStarProgress" class="wish-star-progress" aria-live="polite">0 / 5 stars</p>
+        <p id="wishStarMessage" class="wish-star-message" aria-live="polite">A little magic, one tap at a time.</p>
+        <button id="anotherSurpriseButton" class="subtle-button" type="button" hidden>another little surprise</button>
+      </div>
+
+      <div class="arcade-card heart-rush-card" id="heartRushGame">
+        <p class="game-eyebrow">MINI-GAME 03</p>
+        <h3 class="heart-rush-title">Heart Rush ♡</h3>
+        <p class="heart-rush-description">Catch as many hearts as you can before the 20 seconds run out. Every catch builds your combo!</p>
+        <div class="heart-rush-stats" aria-live="polite">
+          <span>Score <strong id="heartRushScore">0</strong></span>
+          <span>Time <strong id="heartRushTime">20</strong>s</span>
+          <span>Best <strong id="heartRushBest">0</strong></span>
+        </div>
+        <div class="heart-rush-arena" id="heartRushArena" aria-label="Heart Rush play area">
+          <button id="heartRushTarget" class="heart-rush-target" type="button" aria-label="Catch the heart" hidden>♡</button>
+          <p id="heartRushPrompt" class="heart-rush-prompt">Ready for a tiny challenge?</p>
+        </div>
+        <button id="heartRushStart" class="soft-action-button" type="button">start heart rush</button>
+        <p id="heartRushResult" class="heart-rush-result" aria-live="polite">Your best score stays saved on this device.</p>
+      </div>
+
+      <div class="kombat-card" id="forYouKombat">
+        <div class="kombat-header">
+          <p class="game-eyebrow">SECRET ARCADE MODE · PLAYER 1 VS PLAYER 2</p>
+          <h3>FORYOU <span>KOMBAT</span></h3>
+          <p>Two fighters. One tiny arena. Infinite bragging rights.</p>
+        </div>
+        <div class="kombat-select">
+          <label>Game mode
+            <select id="kombatMode">
+              <option value="ai">Player vs Love-Bot</option>
+              <option value="local">Local two-player</option>
+            </select>
+          </label>
+          <label>Player 1 name <input id="kombatP1Name" maxlength="18" value="MY LOVE" autocomplete="off"></label>
+          <label>Player 2 name <input id="kombatP2Name" maxlength="18" value="ME" autocomplete="off"></label>
+        </div>
+        <div class="kombat-hud">
+          <div class="kombat-player-hud"><div class="kombat-player-line"><strong id="kombatP1Label">MY LOVE</strong><span>P1</span></div><div class="kombat-health-track" role="progressbar" aria-label="Player 1 health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><div id="kombatP1Health" class="kombat-health-fill p1-health"></div></div></div>
+          <div class="kombat-player-hud"><div class="kombat-player-line"><strong id="kombatP2Label">ME</strong><span>P2 / CPU</span></div><div class="kombat-health-track" role="progressbar" aria-label="Player 2 health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><div id="kombatP2Health" class="kombat-health-fill p2-health"></div></div></div>
+        </div>
+        <div class="kombat-screen"><canvas id="kombatCanvas" width="960" height="420" aria-label="ForYou Kombat pixel-art fighting arena"></canvas></div>
+        <div class="kombat-actions"><button id="kombatStart" class="kombat-start" type="button">▶ START FIGHT</button><button id="kombatReset" class="soft-action-button" type="button">reset round</button><button id="kombatMute" class="soft-action-button" type="button" aria-pressed="true">♪ SOUND ON</button></div>
+        <p id="kombatStatus" class="kombat-status" aria-live="polite">Pick your mode, then start the fight.</p>
+        <details class="kombat-controls-guide"><summary>How to fight</summary><div class="kombat-key-guide"><p><strong>PLAYER 1</strong> A / D move · W jump · F punch · G kick · Space block</p><p><strong>PLAYER 2</strong> ← / → move · ↑ jump · K punch · L kick · ↓ block</p><p>On touch screens, use the controls below. Player 2's controls are useful in local mode.</p></div></details>
+        <div class="kombat-touch-controls" aria-label="Touch controls">
+          <div class="kombat-touch-player"><strong>PLAYER 1</strong><div class="kombat-touch-row"><button type="button" data-kombat-control="left">◀</button><button type="button" data-kombat-control="right">▶</button><button type="button" data-kombat-control="jump">↑</button></div><div class="kombat-touch-row"><button type="button" data-kombat-control="punch">PUNCH</button><button type="button" data-kombat-control="kick">KICK</button><button type="button" data-kombat-control="block">BLOCK</button></div></div>
+          <div class="kombat-touch-player"><strong>PLAYER 2</strong><div class="kombat-touch-row"><button type="button" data-kombat-control="p2left">◀</button><button type="button" data-kombat-control="p2right">▶</button><button type="button" data-kombat-control="p2jump">↑</button></div><div class="kombat-touch-row"><button type="button" data-kombat-control="p2punch">PUNCH</button><button type="button" data-kombat-control="p2kick">KICK</button><button type="button" data-kombat-control="p2block">BLOCK</button></div></div>
+        </div>
+        <p class="kombat-footnote">Original pixel fighters made for your little corner of the internet — not official Mortal Kombat characters.</p>
+      </div>
+    </section>
+
   </main>
 
-  <!-- MUSIC DRAWER -->
+  <!-- MUSIC DRAWER: tracks are populated from js/data/songs.js -->
   <div class="music-widget">
-    <button id="musicButton" class="music-button">♫</button>
-    <div id="playlistDrawer" class="playlist-drawer hidden">
-      <h4>Songs that remind me of her 🎧</h4>
-      <ul id="playlist">
-        <li data-src="assets/song.mp3" class="active">Default Track</li>
-        <li data-src="assets/Stay with me a bit longer. 📝 Sad Lofi Playlist.mp3">Track 02</li>
-      </ul>
+    <button id="musicButton" class="music-button" type="button" aria-label="Open music player" aria-expanded="false" aria-controls="playlistDrawer">♫</button>
+    <div id="playlistDrawer" class="playlist-drawer hidden" aria-label="Music player" aria-hidden="true" inert>
+      <p class="music-eyebrow">A LITTLE SOUNDTRACK FOR US</p>
+      <h4>Love, on repeat ♡</h4>
+      <p id="currentTrackLabel" class="current-track-label">Choose a song</p>
+      <div class="music-timeline-labels"><span id="musicCurrentTime">0:00</span><span id="musicDuration">0:00</span></div>
+      <input id="musicSeek" class="music-seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek through song" />
+      <div class="music-main-controls" aria-label="Playback controls">
+        <button id="musicPreviousButton" class="music-control-button" type="button" aria-label="Previous song" title="Previous song">|◀</button>
+        <button id="musicBackButton" class="music-control-button" type="button" aria-label="Rewind 10 seconds" title="Rewind 10 seconds">↶ 10</button>
+        <button id="audioToggleButton" class="audio-toggle-button" type="button">▶ Play</button>
+        <button id="musicForwardButton" class="music-control-button" type="button" aria-label="Forward 10 seconds" title="Forward 10 seconds">10 ↷</button>
+        <button id="musicNextButton" class="music-control-button" type="button" aria-label="Next song" title="Next song">▶|</button>
+      </div>
+      <button id="musicStopButton" class="music-stop-button" type="button">■ Stop & rewind</button>
+      <ul id="playlist" aria-label="Available songs"></ul>
+      <p id="musicStatus" class="music-status" aria-live="polite">Music starts when you press play.</p>
     </div>
   </div>
 
-  <audio id="music" loop autoplay muted>
-    <source src="assets/song.mp3" type="audio/mpeg">
-  </audio>
+  <audio id="music" loop preload="none"></audio>
 
   <!-- SECONDARY PAGE: WINTER VOICE OVERLAY -->
-  <div id="winterModal" class="winter-modal hidden">
+  <div id="winterModal" class="winter-modal hidden" role="dialog" aria-modal="true" aria-label="Winter voice story" aria-hidden="true" inert>
     <!-- Controls Top Right -->
     <div class="winter-controls">
       <button id="langToggleBtn" class="lang-btn">Қазақша</button>
@@ -151,6 +287,16 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    // Native ES modules need HTTP(S); this explains why controls appear inert on file://.
+    if (location.protocol === "file:") {
+      const notice = document.createElement("p");
+      notice.textContent = "ForYou needs a local server to run its interactive features. In this folder, run: python -m http.server 8000 — then open http://localhost:8000";
+      notice.setAttribute("role", "status");
+      notice.style.cssText = "position:fixed;z-index:2000;left:12px;right:12px;bottom:12px;padding:14px 16px;border:1px solid rgba(255,120,159,.45);border-radius:14px;background:#17111d;color:#fff;font:14px/1.6 sans-serif;box-shadow:0 8px 30px #0008";
+      document.body.appendChild(notice);
+    }
+  </script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

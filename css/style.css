@@ -315,7 +315,8 @@ main {
   border: 1px solid var(--border);
   padding: 15px;
   border-radius: 12px;
-  width: 200px;
+  width: 240px;
+  max-width: calc(100vw - 28px);
   backdrop-filter: blur(15px);
   transition: 0.3s;
 }
@@ -334,17 +335,6 @@ main {
 
 .playlist-drawer ul {
   list-style: none;
-}
-
-.playlist-drawer li {
-  font-size: 0.8rem;
-  color: var(--muted);
-  padding: 5px;
-  cursor: pointer;
-}
-
-.playlist-drawer li.active, .playlist-drawer li:hover {
-  color: #fff;
 }
 
 /* =========================
